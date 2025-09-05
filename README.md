@@ -93,7 +93,18 @@ Three ways to interact with AWS
 
 - For most organizations, cloud adaption does not happen immediately
 - **technology, people and processes** are the three things that must be in alignment for a successful cloud adaption
--  
+-  Cloud adaption framework: a document created to help organizations design and travel an accelerated path to successful cloud adoption
+-  Provides guidance and best practices to help organizations identify gaps in skills and processes.
+-  Organizes guidance into 6 areas to focus, called **perspectives**
+  1. Business (business capabilities, business managers, finance managers, budget owners, strategy stakeholders): Create a strong business case for cloud adaption, and prioritize cloud adoption initiatives. 
+  2. Governance (business capabilities, chief information officer, program managers, enterprise architects, business analysts and protfolio managers): focus on skils and processes needed to align It strategy and goals 
+  3. People (business capabilities, human resources, staffing and people managers): evaluate organizational structures and roles, new skill and process requirements and identify gaps.
+  4. Security (technical capabilities, Chief information security officer, IT security manager, IT security analysys): meets its security objectives
+  5. Platform (technical capabilities, chief of technology officer, IT managers and solutions architects): understand and communicate the nature of It systems and their relationships.
+  6. Operations (technical capabilities, IT operation managers and IT suppor managers): define how day-to-day, quarter-to-quarter and year-to-year business will be conducted.
+
+- Each perspective consists of a set of capabilities, which covers distinct responsibilities owned or managed by related stakeholders
+
 
 
 
