@@ -1,4 +1,4 @@
-<img width="411" height="239" alt="image" src="https://github.com/user-attachments/assets/1de4b114-507f-467c-8752-59a910b55177" /># Dev_journal_csd215_F25
+# Dev_journal_csd215_F25
 
 ## AWS Cloud foundations course
 
@@ -119,8 +119,16 @@ Three ways to interact with AWS
 - Pay less when you reserve
 - Pay less when you use more
 - Pay even less when AWS grows
-
+\
 - <img width="527" height="191" alt="image" src="https://github.com/user-attachments/assets/54823441-7326-4281-a4aa-b52a8e297ccd" />
+
+\
+- Invest in reserved instances (RIs)
+  - Save up to 75%
+  - All Upront Reserved Instance (AURI) + %
+  - Partial Upront Reserved Instance (PURI) +/- %
+  - No Upront Payments Reserved Instance (NURI) - %
+\
 
 - No long term contracts are required
 - All services are available on demand
@@ -260,6 +268,24 @@ Tools:
 - Monthly bill and a breakdown
 - AWS budgets to create notifications for when you go over your budget for the month, budgets can be tracked monthly, quarterly, or yearly level and you can customiza start and end dates.
 - AWS costs and Usage report is a single location for accessing comprehensive infromamtion about your AWS costs and usage. Lists the usage for each service category that is used by an account, in hourly, or daily line items. and any tax that you activated.
+
+**TECHNICAL SUPPORT MODELS**
+
+- AWS support: unique combinations of tools and expertise to support projects
+- Account assistance: Technical Account Manager (TAM)
+- Best practices: AWS truster advisor (online resource that optimzes expenses and tells you what youre doing right and where you need to watch out)
+- Account assistance: AWS Support Concierge
+
+Plans
+1. Basic: free, support for account and billing questions and service limit increases
+2. Developer support: support for early development on AWs
+3. Business Suport: customers that run production workloads
+4. Enterprise support: customers that run business and mission critical workloads
+
+Case severity and response times:
+
+<img width="755" height="271" alt="image" src="https://github.com/user-attachments/assets/b7b66987-f149-4db9-baca-8476eb57ef0c" />
+
 
 
 
