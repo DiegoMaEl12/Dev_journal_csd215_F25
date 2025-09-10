@@ -1,10 +1,7 @@
-# Dev_journal_csd215_F25
-
-## AWS Cloud foundations course
+# Dev_journal_csd215_F25  AWS Cloud foundations course
 
 ## AWS introductory module
 - Gives us a general overview of what are we supposed to expect from the whole course, and how to use AWS academy.
-
 
 ## Module 1 - Cloud concepts overview
 
@@ -287,21 +284,140 @@ Case severity and response times:
 <img width="755" height="271" alt="image" src="https://github.com/user-attachments/assets/b7b66987-f149-4db9-baca-8476eb57ef0c" />
 
 
+## Module 3: AWS Global Infrastructure Overview
+
+- 22 current AWS regions
+- Physical geographical area one or more availability zones in turn to consist of one or more data centers
+- Regions are isolated from each other
+-  When you store data in one region, it is not replicated in others
+-  It is your responsibility to replicate data across regions if your buusiness needs require it
+-  With AWS management Console to enable or disable regions
+
+**Selecting a Region**
+
+- Few factors to consider when selecting a regino, such as:
+  - data governance and legal requirements 
+  - Proximity to customers (latency): (to test it you can use a website like CloudPing)
+  - Services available within the region
+  - Costs (Vary by region)
+ 
+**Availability zones**
+
+- Each region has multiple availability zones (fully isolated partition of the AWS infrastructure)
+  - Currentyl 69 availability zones
+  - Consist of discrete data centers
+  - Designated for fault isolation
+  - Every availability zone contains multiple data centre (typically 3)
+  - Have their own power infrastructure
+  - Physically separated by several kms (all availability zones are within 100kms of each other)
+  - <img width="195" height="236" alt="{332D3E28-4AEC-4BE8-B0E7-ED1D32CA3073}" src="https://github.com/user-attachments/assets/85d6baa9-1f58-4b86-9ee0-e191a04c3a95" />
+  - Interconnected using high-speed private networking
+  - You choose your own availability zones
+  - Recommend replicating data and resources across AZs for resiliency
+ 
+**Data centers**
+
+- Location of where the actual data resides
+- Customers do not specify a data center for the deployment of their resources
+- designed for security
+- Failures can occur that affect the availability of instances in the same location.
+
+Data center designed
+
+- Redundant design, that anticipates and tolerated failure while maintaining service levels
+- Critical system components are backed up to ensure availability
+- AWS continuously monitors service usage to ensure capacity
+- Locations are not disclosed and all acces to them is restricted
+- In case of failure automate processes mode data traffic aaway from the affected area
+
+AWS uses custom network equipment from multiple original device manufacturers (ODMs) 
+
+**Points of presence**
+
+<img width="544" height="361" alt="image" src="https://github.com/user-attachments/assets/4eb868d1-5026-4382-82bc-bb0a8d24bebf" />
+
+- Amazon CloudFront is a Content Delivery Network (CDN) distribute content to end users to reduce latency.
+- Amazon Route 53 is a Domain Name System (DNS) service.
+- AWS points of presence located in most of the major cities around the world
+- Continuously measuring internet connectivity, performance and computing to find the best way to route requests.
+-  187 Points of presence
+-  176 edge locations and 11 REgional edge caches: used when you have content that is not accessed frequently enough to remain in an edge location
+
+**Benefits provided by the infrasturcture**
+
+- Elasticity and scalability: resources can rapidly adjust dynamically
+- Fault tolerance: component redundancy
+- High availability: minimal to no human interversion, minimized downtime
+
+**AWS services and service Categories**
+
+<img width="797" height="359" alt="image" src="https://github.com/user-attachments/assets/3bdac2bd-096b-482a-aaf7-1507e3c07e13" />
+
+AWS offers a broad set of cloud services.
+- 23 different product or service categories, each category consists of one or more servies.
+<img width="832" height="400" alt="image" src="https://github.com/user-attachments/assets/88f02283-6829-40fc-a660-87238c30618a" />
 
 
+**Storage Service**
 
+- Amazon Simple Storage Service (S3): object storage service, offers scalability, data availability and performance.
+- Amazon Elastic Blck Store (EBS): high performance block storage that is designed for use with Amazon EC2
+- Amazon Elastic File System (EFs): scalable fully managed elastic network file system (NFS) for use with cloud and on premise
+- Amazon simple sorage service Galcier: secure durable and low cost S3 cloud storage class for data archiving and long term backup
 
+**Compute Services**
 
+- Amazon Elastic Compute Cloud (EC2): resizable compute capacity as VMs in the cloud
+- Amazon EC2 auto Scaling: add or remove EC2 instances
+- Amazon Elastic Container Service (ECS): highly scalable, high performance container orchestration, supports docker containers
+- Amazon Elastic Container Registry (ECR): storage manage and deploy docker container images
+- AWS Elastiv Beanstalk: deploying and scaling web apps and services on familiar servers
+- AWS Lambds: run code without provisioning or managing servers.
+- Amazon Elastic Kubernetes Service (EKS): deploy manage and scale containerized apps.
+- AWS Fargate: run containers without manage servers or clusters
 
+**Database Services**
 
+- Amazon RElational Database Service (RDS): set up, operate and scale a Relational db in the cloud
+- Amazon Aurora: MySQL and PostgreSQL compatible relational db
+- Amazon Redshift run analycial queries against petabytes of data. Fast performance at any scale
+- Amazon DynamoDB: NoSQL db, key valie and document db. single digit milisecond performance at any scale
 
+**Networking and content delivery services**
 
+- Amazon Virtual Private Cloud (VPC): provision logically isolated selections of the AWS cloud
+- Elastic Load Balancing: distributes incomming app trafic across multiple targets.
+- Amazon CloudFont: fast Content Delivery Network, securely delivers data with low latency and high transfer speed.
+- AWS Transit GatewayL enables customers to connect their Amazon VPCs networks to a single gateway
+- Amazon Route 53: scalable cloud Domain Name System (DNS)
+- AWS Direct Connect: establish a dedicated private network connectino from your data center or office to AWS
+- AWS VPN: secure private tunnel from your netwok or device to AWS global network
 
+**Security, identity and compliance services**
 
+- AWS Identity and Access Management: manage access to AWS services ad resources securely.
+- AWS Organizations: restrict what services and actions are allowedd in your accounts.
+- Amazon Cognito: lets you add user sign in, sign up and access control to your web and mobile apps
+- AWS Artifact provides on demand access to AWS security and compliance reports and select online agreements
+- AWS Key Management Service (KMS): create and manage encryption keys
+- AWS SHield: managed Distributed Denial of Service (DDoS) protection service that safeguards apps running on AWS.
 
+ **AWS Cost Management Services**
 
+- AWS Cost and Usage Report: AWs cost and usage data available, and additional metadata about services pricng and reservations
+- AWS Budgets: set budgets that alert when your costs or usages exceed
+- AWS Cost Explorer: visualize understand and manage your AWS costs and usage over time
 
+**Management and governance services**
 
+- AWS Management console: interface for accessing your account
+- AWS Config: track resource inventory and changes
+- Amazon CloudWatch: monitor resources and apps
+- AWS Auto Scaling: scale multiple resources to meet demand
+- AWS Command Line interface: unified tool to manage services
+- AWS Trusted Advisor: optimize performance and security
+- AWS Well-Architected Tool reviewing and improving your workloads
+- AWS CloudTrail: tracks user activity and API usage.
 
 
 
