@@ -420,6 +420,190 @@ AWS offers a broad set of cloud services.
 - AWS CloudTrail: tracks user activity and API usage.
 
 
+## Module 4: AWS Cloud Security
+
+**AWS Shared Responsibility model**
+
+- Security and compliance are a shared responsibility between AWS and the customer
+- AWs is responsible for protecting the infrastructure that runs all the services offered. (hardware, software, networking...)
+- the customer is responsible for the encryption of data at rest and the encryption of data in transit. Manage security security credentials and login
+
+- <img width="505" height="274" alt="{4EF61D4B-8289-486B-B780-F7C69F474DF0}" src="https://github.com/user-attachments/assets/f9b5c598-72d4-4da5-91c9-88ee50ea61a3" />
+
+**Security of the cloud**
+
+- AWS is responsible of the **security OF the cloud**:
+  - AWS Services (Compute, storage, database, networking)
+  - AWS Global infrastructure (Regions (availability zones), edge locations)
+ 
+- And AWS is responsible for the physical infrastructure that hosts your resources:
+  - Physical security of data centers
+  - Hardware infrastructure
+  - Software infrastructure
+  - Network infrastructure
+ 
+**Customer responsibility**
+
+- On the other side, the customer is responsible for the **security IN the cloud**
+- You are responsible for what you deploy using AWS services:
+  - Securing any instance operating systems
+  - Securing the apps
+  - Security group configuratinos
+  - Firewall configurations
+  - Network configurations
+  - Secure account management
+
+**Service characteristics and security responsibility**
+
+1. Infrastructure as a Service (IaaS):
+   - Basically you are operating most of the server, similar to on premise
+   - Highest level of flexibility and management control
+   - More responsibility of the resources you create and manage
+   - Customer configures the access controls
+  
+2. Platform as a Service (PaaS):
+   - Manage the server but with most of the infrastructure hidden
+   - Remove the need for the customer to manage the underlying infrastructure
+   - AWS handles the opreating system, database patching, firewall config, disaster recovery.
+   - Customer can focus entirely on managing code or data
+  
+3. Software as a Service (SaaS):
+   - Services centrally hosted software that is typically accessible via web browser, mobile appor APIs
+   - Licenced on a subscription or a pay as you go
+   - Customers do not need to manage the infrastructure thaty supports the service
+  
+**AWS Identity and Access Management**
+
+- A service that allows you to control access to compute, storage, database and apps services in the cloud
+- Use IAM to access AWS services
+- Free service
+- Define users, groups roles, and access controls
+- Available to all regions in the cloud
+- Who can access the resource, which resources can be accessed and what can the user do to the resource
+- How resources can be accessed
+
+**IAM essential components**
+
+1. User: Usually a person or app that can authenticate with an AWS account
+2. Group: Collection of IAM users that are granted identical authorization, groups cannot be nested
+3. Policy: document which defines access to one or more services
+4. Role: mechanism to granting temporary access to AWS services, similar to a user, but assumable by any user that needed, temporary credentials
+
+**Authenticate as an IAM user to gain access**
+
+- Authentication is a basic computer security concept: a user or system must first prove their identity
+- When you define an IAM user, select what types of access the user is permitted to use:
+  - Programmatic access: provides AWS CLI and AWS SDK access, and authenticate using:
+    1. Access key Id
+    2. Secret access key
+  - AWS Management Console access:
+    1. user name
+    2. pasword
+    3. If enabled Multi factor Authentication, prompts for an authentication code
+
+**IAM Multi Factor Authentication (MFA)**
+
+- Provides increased security
+- In addition to user name and password, MFA requires a unique authentication code to access AWS services
+
+
+
+**IAM Authorization**
+
+<img width="631" height="280" alt="image" src="https://github.com/user-attachments/assets/4f863371-3ef5-48b2-b607-aab31d237f94" />
+- By default, IAM users do not have access to anything
+- You need to explicitly grant access to each service
+- Principle of least privilege: only the minimal privilege needed for the users
+
+**IAM Policies**
+
+- Document using JSON
+- Two types: 
+  1. Identity based policies: Attach policy to any IAM identity (user, group, role), actions that may or may not be performed
+  2. Resource based policies: attached to a resource (what actions a specified principal can perform on that resource under what conditions.
+ 
+- <img width="766" height="338" alt="image" src="https://github.com/user-attachments/assets/55c21720-ae37-49f1-8303-ccf79b623bc4" />
+- The deny statements are the default ones, and if there is a conflict between an allow and a deny statement, the deny will allways win.
+
+**IAM Permissions**
+<img width="483" height="165" alt="image" src="https://github.com/user-attachments/assets/211a603f-8514-455b-9ac9-06cb72145cfe" />
+
+
+**Securing a new AWS account**
+
+- When you first create an AWS account, you begin with a single sign in identity that has complete access to all services **AWS account root user** 
+- Best practice is to not use this account for day to day interaction
+- Use IAM to create users, asign permissions to these users, following the principle of least privilege
+1. Stop using the root account as soon as possible:
+  1. while signed in the root account, create an IAM user for yourself 
+  2. Create an IAM group, give it full administrator permissions and add the IAM user to the group
+  3. Disable and remove your account root user access keys
+  4. Enable a password policy for users
+  5. Sign in with your new IAM user credentials
+  6. Store your account root users credentials in a safe place
+ 
+ 2. Enable multi factor authentication (MFA)
+    - Require MFA for your account root user and for all IAM users
+    - Control access to AWS service APIs
+   
+ 3. Use AWS CLoudTrail
+    - Service that logs all API requests to resources in your account
+    - Enables operational auditing on your account
+   
+ 4. Enable a billing report, such as the AWS cost and USage report
+    - Billing reports provide infromation aboutyour use of AWS resources and estimated costs for that use
+    - AWS delivers the reportas to an amazon S3 bucked that you specify
+    - AWS Cost and Usage Report tracks your AWS usage and provides estimated charges associated with your AWS account, either by the hour or by the day
+
+**Securing accounts**
+
+**AWS Organizations service**
+
+- Group AWS accounts into Organizational Units (OUs)
+- Integration and support for IAM
+- Use service control policies to establish control over the AWS services and aPI actions that each account can access
+- Service control policies feature:
+  - Centralized control over accounts
+  - Ensures that accounts comply with access control guidelines
+  - SCPs are similar to IAM permissions policies (similar syntax, SCP never grants permissinos, specify the maximum permissions for an organizations)
+ 
+**AWS Key Management Service (KMS)**
+- Manage encryption keys
+- ENables to control the use of encryption across AWS services and in your apps
+- Integrates CloudTrain to log all key usage
+
+**Amazon cognito**
+- Adds users sign up sign in and access control to your web and mobile app
+- Sclaes to milliosn of users
+- Suports with social identity providers such as facebook, google and amazon
+
+**AWS shield**
+- Managed distributed delial of Service (DDoS) protection service
+- Safeguards apps running on AWS
+- Provides always on detection and automatic inline mitigations
+- AWS Shield standard enabled for no additional cost
+- Use it to minimize app downtime and latency
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  
