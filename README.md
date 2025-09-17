@@ -35,7 +35,7 @@
 
 Cloud computing deployment models
 
--** Cloud based app**: fully developed in the cloud. apps can either be created on the cloud or migrated to it.
+- **Cloud based app**: fully developed in the cloud. apps can either be created on the cloud or migrated to it.
 - **Hybrid**  : is a way to connect your existing between cloud based infrastructure and apps and existing resources that are not in the cloud.
 - **On-premises** (private cloud): use virtualization and resource management tools, it does not provide many of the benefits of cloud computing, sometimes provide dedicated resources
 
@@ -116,16 +116,14 @@ Three ways to interact with AWS
 - Pay less when you reserve
 - Pay less when you use more
 - Pay even less when AWS grows
-\
 - <img width="527" height="191" alt="image" src="https://github.com/user-attachments/assets/54823441-7326-4281-a4aa-b52a8e297ccd" />
 
-\
 - Invest in reserved instances (RIs)
   - Save up to 75%
   - All Upront Reserved Instance (AURI) + %
   - Partial Upront Reserved Instance (PURI) +/- %
   - No Upront Payments Reserved Instance (NURI) - %
-\
+
 
 - No long term contracts are required
 - All services are available on demand
@@ -629,13 +627,99 @@ AWS offers a broad set of cloud services.
   - Can access example downloads
   - Access AWS artifact directly from the AWS Management console
 
+## Module 5: networking and content delivery
 
+**Networking basics**
 
+- Network: 2 or more machines that are connected together to share resources
+-  Logically partitioned into subnets
+-  Requires a networking devide (router, switch)
 
+-  IP addresses:
+  - Internet protocol address
+  - Uninque numbers that identifies a machine
+  - IPv4: 32 bit addresses 000.0.0.0
+  - IPv6: 128 bit addresses 0000:0000:0000:0000:0000:0000:0000:0000
+  - Network identifier (routing prefix) fixed bits of the address
+  - Host identifier the flexible bits of the address
+  - /24 means that the first 24 bits are fixed which means that the last 8 bits are flexible for the host machine, which in this case can go from 0 to 255
+  - <img width="351" height="189" alt="{214F3DD2-ACE7-4A78-BA39-CBFF6E02726A}" src="https://github.com/user-attachments/assets/eba3a4e3-870b-45b9-9690-ee449a950719" />
 
+**Amazon VPC**
 
+- Amazon Virtual Pritave Cloud: service that lets you provision a logically isolated section of the AWS cloud, where you can launch your services
+- Gives you control over your virtual resources (selection of your ip addresses, subnets, route tables and gateways)
+- Customize network config
+- Multiple layers of security
+- Provision VPCs
+  - Logically isolated fro mother VPCs
+  - Dedicated to your AWS account
+  - Belong to a single region (can spam multiple availability zones)
+  - Subnets belong to a single availability zone, can be classified as public or private
 
+  **IP addressing**
+- You assign your own IP addresses
+- CIDR blocks, the range of private IP addresses IPv4: /16 (65536 ip addresses) - /28 (16 addresses)
+- IPv6 is also supported
+- You can create multiple subnets in one network but the CIDR blocks cannot overlapse
+- Reserved IP addresses:
+  -  Each subnet requires a CIDR block
+  -  Each CIDR block reserves 5 IP addresses within that block that you cannot use
+  -  Network Address, VPC local router (internal communications), Domain Name System resolution, Future Use, Network broadcas address
+- Public IP address types:
+  - Elastic IP address: Assocuated with an AWS account, can be allocated and remapped anytime, additional costs might apply
+  - Public IPv4 address: Manually assigned through an Elastic IP address, Automatically assigned through the auto-assign public IP address setings at the subnet level
+- Elastic network interface:
+  - Virtual network interface that you can attach or unattach from an instance in a VPC
+  - When you move an instance from one network to another, traffic is redirected to the new instance
+  - Each instance has a default network interface
+- Route tables and routes:
+  - set of rules that directs traffic from your subnet
+  - each route specifies a destination and a target
+  - every route table contains a local route for communication within the VPS
+  - Each subnet must be associated with at most one rout table
 
+**VPC NETWORKING**
+
+- Internet gateway:
+  - VPC component that allows communication between instances in your VPS and the internet
+  - provide a target in the route tables
+  - perform network address translation for instances that were assigned public IPv4 addresses
+  - <img width="471" height="206" alt="image" src="https://github.com/user-attachments/assets/3b1abcff-9532-4435-9276-51cb68f8e719" />
+- Network address translation (NAT) gateway
+  - Enables instances in a private subnet to connect with the internet or other services
+  - But also prevents the internet from initiating a connection with those instances
+  -  <img width="558" height="264" alt="image" src="https://github.com/user-attachments/assets/8bfc6a33-b3ca-4a65-8d03-b8da96685613" />
+  
+**VPC SHARING**
+- Share VPCs with other AWS accounts in the smae organization
+- Enables multiple accounts to create their own application resources
+- The account that owns the VPC shares one or more subnets with other accounts
+
+**VPC PEERING**
+- networking connection between two VPCs that enables you to route traffic between them privately.
+- You can create these connections in the same account, in another accounts, or even accross regions
+- It can just be between 2 VPCs, data transfered from one VPC to another, will stop in the second one, it cannot travel to a third VPC
+
+**AWS Site to site VPN**
+- Virtual Private Network connection
+  1. Create a new virtual gateway device
+  2. Define the configuration of the VPN device or the customer gateway
+  3. Create a custom route table
+  4. Establish an AWS Site to site VPN
+  5. Configure routing to pass traffic thorough the connection
+ 
+**AWS direct connect**
+- To prevent that distance negatively affect the network performance
+- Direct connect enables you to establish a dedicated, private network connection between your network and one DX location (direct connection)
+
+**VPC endpoints**
+- Virtual device that enables to privately connect your VPC to supported AWS services
+- Gateway endpoints
+- Interface endpoints
+
+**AWS Transit gateway**
+<img width="675" height="317" alt="image" src="https://github.com/user-attachments/assets/fb8c9db1-abbb-4e73-9549-f2f2c6e9b6e0" />
 
 
 
