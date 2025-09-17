@@ -584,9 +584,50 @@ AWS offers a broad set of cloud services.
 - AWS Shield standard enabled for no additional cost
 - Use it to minimize app downtime and latency
 
+**SECURING DATA**
 
+- Data encryption is an essential tool to use when your objective is to protect digital data
+- Take data that is legible and encodes it so that it is unreadable to anyone who does not have access to the secret key that can be used to decode it
+- Data at rest is data that is physically stored on a disk or on tape
+- AWS KMS encryption and decryption are handled automatically
+- Data in transit is data moving accross a network
+- Encryptino of data in transit is accomplished using Transport Layer Security (TLS) with an open standar cipher (AES-256) formerly called Secure Sockets Layer (SSL)
+- AWS certificate manager is a service that enables to manage, provision and deploy SSL and TSL certificates for use with AWS services
+- Web traffic that runs over HTTP is not secured, however web traffic that runs over Secure HTTP or HTTPS is encrypted using TSL or SSL certificates
+- AWS services support data in transit encryption
 
+**SECURING AMAZON S3 BUCKETS AND OBJECTS**
 
+- By default, all buckets and objects are private and protected, and only accounts with explicit access can access it
+- Tools to control access to amazon S3 buckets and objects:
+  - Amazon S3 Block Public access (these settings override any other policies or permissions)
+  - IAM policies (specify users or roles that can access specific buckets or objects)
+  - Bucket policies (define access to specific buckets or objects, usually when a user cannot authenticate with IAM)
+  - Access Control Lists (ACLs) (not commonly used because predates IAM)
+  - AWS Trusted Advisor (bucket permission check feature useful for discovering if any buckets in your account have permissions)
+ 
+**WORKING TO ENSURE COMPLIANCE**
+
+- Compliance programs
+  - external certifying bodies and independent auditors to provide customers with information about policies, processes and controls that are established and operated by AWS
+  - requirements for stablishing, implementin, maintaining and continuinly improving an Information Security Management sysytem
+  - Laws, regulations and privacy
+  - Alignments and frameworks
+ 
+- AWS Config
+  - Service that enables you to assess audit and evaluate tha configuratinos of AWS resources
+  - Maintains a history of your configuration
+  - automatically evaluate recorded configurations
+  - review changes
+  - review deatiled config histories
+  - Simplify compliance auditing and secure analysis
+  - REgional service, you need to enable it in each region that you need
+ 
+- AWS Artifact
+  - Resource for compliance-related information
+  - Provides access to security and compliance reports and select online agreements
+  - Can access example downloads
+  - Access AWS artifact directly from the AWS Management console
 
 
 
