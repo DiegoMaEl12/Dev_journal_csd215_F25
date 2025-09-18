@@ -721,6 +721,83 @@ AWS offers a broad set of cloud services.
 **AWS Transit gateway**
 <img width="675" height="317" alt="image" src="https://github.com/user-attachments/assets/fb8c9db1-abbb-4e73-9549-f2f2c6e9b6e0" />
 
+**VPC Security**
+
+Security groups
+- Act at the instance level,
+- Way to filter traffic to and from your instances
+- Rules to manage instance traffic
+- Are sealed shut to inbound traffic
+- Equivalent to firewall to your EC2 instances
+- Outbound traffic is always allowed
+
+Network access control lists (ACLs)
+
+- Work at the subnet level
+- Each subnet must be associated with an ACL
+- One to one ACL and subnet
+- An ACL has separate inbound and outbound rules, and each rule can allow or deny traffic
+- There is a default ACL, if you dont especify one: default network ACLs allow all inbound and outbound IPv4 traffic
+- Stateless
+
+Differences
+<img width="443" height="170" alt="image" src="https://github.com/user-attachments/assets/12977e22-8590-49b1-9af4-18247f677c63" />
+
+**Amazon Route 53**
+
+- Domain Name System web service 
+- Register Domain names
+- Fully compliant with ipv4 and ipv6
+- Route users to the internet by translating domain names like www.example.com to ip addresses that computers use to connect to each other
+
+Supported routing
+- Simple routing: single server environments
+- Weighted routing: assign weights to resource record sets to specify the frequency
+- Latency routing: help improve your gloval apps
+- Geolocation routing: route traffic based on the location of the users
+- Geoproximity routing: Based on the location of your resources
+- Failover routing: Fail over to a backup site (health check to be configured)
+- Multivalue answer routing: Combine any of the other routings
+
+DNS Failover: 
+- Improve the availability of the apps that run on AWS
+  - Configuring backup and fialover scenarions for your own apps
+  - Enabling highly available multi region architecrutes on AWS
+  - Creating health checks
+ <img width="573" height="300" alt="image" src="https://github.com/user-attachments/assets/41c8ce6e-4ff6-409e-aa68-4ae39f7cfbfa" />
+
+**Amazon CloudFront**
+
+- Network performance latency
+- the distance significantly affects performance, that is why is necessary a content delivery network
+- CloudFront is a fast, global and secure Content Delivery Network service
+- High transfer speeds
+- Pay as you go pricing
+- Self service offering
+- Relies on route 53 geo location routing
+- Edge location: network of data centers that CloudFront uses to serve popular content quickly to customers
+
+NAT gateway: Network Address Translation gateway
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
