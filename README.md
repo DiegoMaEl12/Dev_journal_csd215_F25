@@ -780,15 +780,158 @@ DNS Failover:
 NAT gateway: Network Address Translation gateway
 
 
+## Module 6: compute
+
+**Compute services**
+<img width="597" height="251" alt="{D7DF7C10-16C3-4174-80C7-EB2424280E25}" src="https://github.com/user-attachments/assets/0d547353-5f5e-495f-9da0-f074f14c000e" />
+- **Amazon Elastic Compute Cloud (Amazon EC2)** provides resizable virtual machines
+- **Amazon EC2 Auto Scaling** supports application availability by allowing you to define conditions that will automatically launch or terminate EC2 instances
+- **Amazon Elastic Container Registry (Amazon ECR)** is used to store and retrieve Docker images.
+- **Amazon Elastic Container Service (Amazon ECS) **is a container orchestration service that supports Docker
+- **VMware Cloud** on AWS enables you to provision a hybrid cloud without custom hardware
+- **AWS Elastic Beanstalk** provides a simple way to run and manage web applications
+- **AWS Lambda** is a serverless compute solution. You pay only for the compute time that you use
+- **Amazon Elastic Kubernetes Service (Amazon EKS)** enables you to run managed Kubernetes on AWS
+- **Amazon Lightsail** provides a simple-to-use service for building an application or website
+- **AWS Batch** provides a tool for running batch jobs at any scale
+- **AWS Fargate** provides a way to run containers that reduce the need for you to manage servers or clusters
+- **AWS Outposts** provides a way to run select AWS services in your on-premises data center
+- **AWS Serverless Application Repository** provides a way to discover, deploy, and publish serverless applications
+
+**Categories of compute services**
+1. Infrastructure as a Service: Instance based, Provides virtual machines Amazon EC2, flexibility and leaves many of the server management responsibilities to you
+2. Serverless computing: Function based, low cost. AWS Lambda, zero administration compute platform, run code without managin or porovisioning servers
+4. Container-based computing: Instance based. Amazon ECS, EKS, Fargate, ECR. sign up and execute jobs quickly
+5. Platform as a Service: Web apps. AWS Elastic Beanstalk. Focus on code AWS provides with all the app services that you need
+
+**Optimal compute service**
+
+- Depend on the use case
+  - What is your app design?
+  - What are your usage patterns
+  - Which configuration settings will you want to manage?
+ 
+**Amazon EC2 Elastic Cloud Computing**
+
+- Provides virtual machines (EC2 instances) where you can host the same kinds of apps you can run in traditional on premises server
+- Common uses
+  - App server
+  - Web server
+  - Database server
+  - Game server
+  - Mail server
+  - Media server
+  - Catalog server
+  - File server
+  - Computing server
+  - Proxy server
+ 
+- Full admin over the OS that runs in these VMs
+- You can lunch any number of instances of any size into availability zones anywhere in the world
+- Control traffic to and from instances
+- - **AMI Amazon Machine Image**: Provides information that is required to launch an EC2 instance 
+- Key decisions to make when launching an EC2 instance
+  1. Which Amazon Machine Image (AMI) to launch from.
+     - Quick start: linux and windows AMIs that are provided by AWS
+     - My AMIs: AMis that you've created
+     - AWS Marketplace: Preconfigured templates by third parties
+     - Community AMIs: AMIs created by people all around the world (use at your own risk)
+     - <img width="603" height="281" alt="image" src="https://github.com/user-attachments/assets/350466df-098c-476d-8691-72bff6287ee0" />
+
+  2. Select an instance type
+     - Consider your case
+     - The instance type determines:
+       - Memory (RAM)
+       - Processing power (CPU)
+       - Disk space and disk type (Storage)
+       - Network performance
+     - Instance type categories:
+       - General purpose
+       - Compute optimized
+       - Memory optimized
+       - Storage optimized
+       - Accelerated computing
+     -  Instance type naming:
+       - t3.large
+       - t family name
+       - 3 generation number
+       - large is the size
+    - <img width="537" height="214" alt="image" src="https://github.com/user-attachments/assets/266caf9c-eb2c-4470-8cee-94af8b846749" />
+    - Important to select also taking into account the networking needs of your development
+
+  3. Specify network settings
+     - Region must be selected before starting the launch EC2 instance
+     - Withing the region you can select to deploy the instance in an existing subnet or VPC
+     - You can create a new subnet or VPC if wanted
+     - If not specified VPC it will be deployed in a default VPC adding a public IP address
+
+  4. Attach IAM role (optional)
+     - For when running an app that must make secure API calls to other services
+     -  Instance profile is a container for an IAM role
+    
+  5. User data script (optional)
+     - Can automate the completion o installation or configurations at instance launch
+     - Customize the runtime environment of your instance
+     - Can be used strategically
+     - Must be written in a format that is compatible with a command prompt window or powershell
+    
+  6. Specify storage
+     - Configure the root volume
+     - Attach additional storage volumes (optional)
+     - For each volume:
+       - Size of the disk
+       - Volume type
+       - if the volume will be deleted when the instance is terminated
+       - If the encryption should be used
+     - Storage options:
+       - Amazon Elastic Block Store (EBS): durable, block level storage volumes, you can stop the instance and start it again and the data will be there
+       - Amazon EC2 Instance Store: EPhemeral storage is provided on disks that are attached to the host computer, if the instance stops, data will be deleted
+       - Other options (not for the root volume): Amazon Elastic File System (EFS), Amazon Simple Storage Service (S3)
+  7. Add tags
+     - Label that you assign to an AWS resource
+     - Tagging is how you attach metadata to an EC2 instance
+     - Potential benefits of tagging: filtering, automation, cost allocation, and access control
+
+  8. Security groups settings
+     - set of firewall rules that control traffic to the instance
+     - Create rules that specify the source and which ports that network communication can use
+     - If not selected rules, the default rules will be applied
+
+  9. Identify or create the key pair
+     - You can select an existing key, or create a new key pair
+     - Consists of a public key (that AWS stores) and a private key (that you store)
+     - It enables secure connections to the instance
+     - For windows AMIs, use the private key to obtain the administrator password that you need to log in to your instance
+     - For Linux AMIs, use the private key to use SSH to securely connect to your instance
+    
+**You can also lauunch an EC2 instance with the AWS Command Line Interface**
+- Programmatically
+- <img width="308" height="144" alt="image" src="https://github.com/user-attachments/assets/fe7835fd-77bc-433b-b13e-1d43d55d9ce4" />
+- Successfully create the EC2 instance if the command is properly formatted, the resourses already exists, you have permissions to run the command, and you have sufficient capacity in AWS account
+- If the command is successfull, the command responds with the instance ID and other information about it.
+- <img width="520" height="263" alt="image" src="https://github.com/user-attachments/assets/2765304f-7310-4489-a08a-d5f51b565594" />
+
+**Consider using an Elastic IP address**
+- Rebooting an instance will not change any IP addresses or DNS hostnames
+- When an instance is stopped and started again the ip address and external DNS hostname will change
+- For a persistent public IP address use an elastic addres
+
+**EC2 instance metadata**
+- Data about your instance
+- While you are connected to the instance you can view it:
+- https://169.254.169.254/latest/meta-data
+- Can be used yto configure or manage a running instance
+- in the terminal you can view it by running the command:
+- curl https://169.254.169.254/latest/meta-data
 
 
-
-
-
-
-
-
-
+**Amazon CloudWatch for monitoring**
+- Collects and processes raw data from amazon EC2 to near real time metrics
+- Maintains 15 months of historical data
+- Basic monitoring
+- no additional cost and data sent every 5 minutes
+- Detailed monitoring
+- fixed monthly rate, every 1 minute data delivered
 
 
 
