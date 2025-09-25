@@ -934,12 +934,146 @@ NAT gateway: Network Address Translation gateway
 - fixed monthly rate, every 1 minute data delivered
 
 
+**Amazon EC2 cost optimization**
+- Pricing models:
+  - On-demand instances: pay for the hour, no long term commitments, elegible for the free tier. (low cost and flexibility)
+  - Dedicated hosts: physical server with EC2 instance capacity fully dedicated to your use (licencing restrictions or needs)
+  - Dedicated instances: instances that run in a VPC, on hardware that is dedicated to a single user.
+  - Reserved instance: full partial or no upfront payment, discount on hourly charge, 1 or 3 year term (predictable or steady state compute needs) 
+  - Shecduled reserved instances: purchase a capacity reservation that is always available on a recurring schedule you specify, 1 year term
+  - Spot instances: bid on unsued EC2 instances, can lower your costs (large scale at a significantly discounted price)
+ 
+  - Per second billing: available only for on demand instances, reserved instances and spot instances that run amazon linux or ubuntu
+ - <img width="759" height="313" alt="{FC1BD4D1-03FA-4F70-9A09-D6C65E21737A}" src="https://github.com/user-attachments/assets/9ba1ea45-9d5c-4718-af5a-7286d80d3358" />
+
+**Cost optimization**
+1. Right size: provision instances to match the need, use metrics, right size, then reserve
+2. Increase elasticity: Stop or hibernate amazon EBS backed EC2 instances that are not actively in use. Automatic scaling to match needs based on usage
+3. Optimal pricing model: Leverage the right pricing model for your use case, optimiize and combine puurchase types, consider serverless solutions
+4. Optimal storage choices: Reduce costs while maintaining performance, resize EBS volumes, Change volume types, Delete EBS snapshots that are no longer needed, Identify the appropriate destination for different types of data
+
+- Routinely measure and analyze your system so you can continuenly improve and adjust your costs
+- Activate cost allocation tags
+- Architect for cost
+- Define metrics set targeds and review regularly
+
+**Container services**
+
+**Containers**: method of operating system virtualization, enables you to run an app and dependencies in resource-isolated processes
+<img width="168" height="212" alt="image" src="https://github.com/user-attachments/assets/11535bf8-9755-4a25-a5d0-d58da59583ef" />
+
+Benefits
+- Repeatable
+- Self-contained environments
+- Software rund the same in different environments
+- Faster to launch and stop or terminate than VMs
+
+**Docker**
+- Software platform that packages software into containers
+- You run containers in docker
+- Installed in each server
+- Templates called docker images
+- Containers like virtual machines
+- VMs run directly in a hypervisor
+- Containers run on any OS if they have the appropriate features to support docker
+<img width="796" height="360" alt="image" src="https://github.com/user-attachments/assets/866662d6-8991-4b5d-b443-f83ae6e92e0b" />
+
+**Amazon ECS (Elastic Container Service)**
+
+- Scalable high performance container management service
+- Orcherstrates the running of docker containers
+- Removing the complexing of managing the infrastructure yourself
+- Familiar set of features as the EC2 services
+- **Task definition** to prepare your application to run, specifies things like which containers deploy to run the task
+  - Is a text file that describes one or more containers, up to 10 that form your app
+  - You define which tasks you want to run in within a cluster, and Amazon is responsible for placing tasks within the cluster
+- A task is the instantiation of a task definition within a cluster
+- <img width="557" height="248" alt="image" src="https://github.com/user-attachments/assets/57ae8421-f420-49e9-8fe9-b1c23564412c" />
+
+- ECS is managing the running of two different containers (A & B).
+- In this example, we deploy 3 copies of Container A and 2 copies of Container B into a cluster with 2 EC2 instances.
+- ECS decides how to distribute those copies across the 2 instances based on available resources and rules.
+- Together, the EC2 instances form the ECS cluster, and ECS is responsible for orchestrating which containers run where.
+
+**ChatGPT conversation about containers and clusters**
+https://chatgpt.com/share/68d56cdb-0dec-800f-9ec3-3056d78bb128
+
+**Cluster options**
+- Amazon ECS cluster backed by Amazon EC2:
+  - More granular control over infrastructure
+  - you can launch and manage the EC2 instances
+  - You control how containers get scheduled
+ 
+- Amazon ECS cluster backed by AWS Fargate:
+  - You do not manage EC2 instances at all
+  - You just tell how many copies of which containers do you want and fargate will manage everything else
+  - Easier to maintain but less control
 
 
+**Kubernetes**
+- Open software for container orchestration
+- Automates:
+  - It automates:
+    - Deployment (starting containers).
+    - Scaling (more or fewer copies of containers).
+    - Networking (how containers talk to each other).
+    - Storage (persistent data for containers).
+    - Self-healing (restarts failed containers).
+   
+  - Containers alone solve "packaging apps" but not running them at scale, that's how kubernetes help
+ 
+- **Amazon Elastic kubernetes Service (Amazon EKS)**
+  - Enables running kubernetes on AWS
+  - Supports linux and windows containers
+  - Manage clusters of Amazon EC2 compute instances
+  - Run containers that are orchestrated by kubernetes on those instances
+ 
+**Amazon Elastic Container Regitry (ECR)**
+- fully managed docker container registry
+- Store manage and deploy docker container images
+- Integrated with ECS
+- You can transfer container images to and from ECS via HTTPS
 
+**AWS Lambda**
+<img width="765" height="290" alt="image" src="https://github.com/user-attachments/assets/07051f5d-db7d-4803-befe-6286b03af64e" />
 
+- Serverless compute service
+- Run code without managing or provisioning servers
+- lambda function: AWs resource that contains the code that you upload
+- code only runs when it is triggered
+- You pay for the compute time that you use, (you dont pay when your code is not running)
+- Supports multiple programming languages
+- Completely automated administration
+- Built-in fault tolerance
+- Supports the orchestration of multiple funcitons
 
+Event sources
+- AWs service or developer-created application that produces events that trigger an AWS lambda function to run
+- You can also invoke functions directly from the console, SDK or CLI.
 
+Lambda function configuration
+- Function name
+- Run time environment
+- Excecution role, IAM permission to the function to access certain services
+- configure the function
+  - Adding a trigger
+  - Add the function code
+  - Specify the memory (MBs) to allocate your function
+  - Timeout, VPC, other settings (optional)
+- <img width="752" height="334" alt="image" src="https://github.com/user-attachments/assets/5bc7f42a-ad68-4c0c-b9b0-7d84be5d53f2" />
+
+- Schedule/event-based lambda function
+
+AWS Lambda quotas
+- Soft limits (relax by submitting a support ticket and a justification) per Region:
+  - Concurrent executions: 1000
+  - function and layer storage: 75gb
+- Hard limits (cannot be relaxed) for individual functions:
+  - Maximum function memory allocation
+  - Function timeout: 15 mins
+  - Deployment package size: 250 MB unzipped, including layers
+  - Container image code package size: 10Gb
+  
 
 
 
