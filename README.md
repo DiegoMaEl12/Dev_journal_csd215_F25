@@ -1074,8 +1074,24 @@ AWS Lambda quotas
   - Deployment package size: 250 MB unzipped, including layers
   - Container image code package size: 10Gb
   
+**AWS Elastic Beanstalk**
 
-
+- Easy way to get web apps up and running
+- Managed service that automatically handles:
+  - Infrastructure provisioning and configuration
+  - Load balncing
+  - Automatic scaling
+  - Health monitoring
+  - Analysis and debugging
+  - Logging
+- No additional cost for elastic beanstalk, you just pay for the services that you use
+- Supports web apps written for common platforms
+- You upload your code and elastic beanstalk automatically handles the deployment
+- deploys on several servers
+- Fast and simple to start using
+- Developer productivity (focusing on writing code)
+- Difficutl to outgrow 
+- Complete resource control 
 
 
 
