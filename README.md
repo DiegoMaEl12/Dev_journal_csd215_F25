@@ -1094,6 +1094,122 @@ AWS Lambda quotas
 - Complete resource control 
 
 
+## Module 7: Storage
+
+**Amazon Elastic Block Store (EBS)**
+
+- CLoud based SSD/HDD that you attach to the virtual machine (EC2 instances)
+- Basically is storing data in a SSD or HDD but in the cloud
+- You can configure performance types and size
+- Provides persistent block storage volumes for use with amazon EC2 instances
+- Replicated within availability zone to protect from data lose
+- Scale your usage up or down within minutes
+
+- **Block storage**
+  - enables you to change one block (piece of the file) that contains certain info
+- **Object storage**
+  - the entire file must be updated to change even just 1 character on it
+
+- In EBS you can create individual sotorage volumes
+- Offers block-level storage
+- A backup of an amazon EBS volume is called a snapshot
+  - The first snapshot is called the baseline snapshot
+  - Every snapshot after the baseline one will only contain what is different from the previous snapshot
+ 
+- Uses:
+  - Boot volumes and sotrage for amazon EC2 instances
+  - Data storage with a file system
+  - Database hosts
+  - Enterprise apps
+ 
+<img width="545" height="248" alt="{8D0AF698-0FD3-4C88-B507-AC38D3D302BF}" src="https://github.com/user-attachments/assets/1b51f28c-3b67-457c-8c9b-315c05a5c231" />
+
+
+Snapshots:
+- Point-in-time snapshots
+- Recreate a new volume at any time
+- Added cost is per GB-month of data stored
+Encryption
+- No additional costs
+- Encrypted amazon EBS volumes
+Elasticity
+- Increase capacity
+- Change to different types
+- Dinamically
+
+Volumes: 
+
+- **Persistent storage**: Volume lifetime is independent of any particular Amazon EC2 instance.
+- **General purpose**: Amazon EBS volumes are raw, unformatted block devices that can be used from any operating system.
+- **High performance**: Amazon EBS volumes are equal to or better than local Amazon EC2 drives.
+- **High reliability**: Amazon EBS volumes have built-in redundancy within an Availability Zone.
+- **Designed for resiliency**: The AFR (Annual Failure Rate) of Amazon EBS is between 0.1% and 1%.
+- **Variable size**: Volume sizes range from 1 GB to 16 TB. 
+- **Easy to use: **Amazon EBS volumes can be easily created, attached, backed up, restored, and deleted.
+
+
+**Amazon Simple Storage Service (S3)**
+
+- An an object-level storage, which means that if you need to make a single change in a file, you need to make tha change and then re upload the entire modified file
+- S3 stores data as objects called buckets
+- Virtually unlimited storage
+- Designed for 11 9s of durability
+- Not associated with any particular service
+- No need to manage any server
+- Objects can be almost any data type
+- By default none of the data is shared publicly
+- Event notifications when certain events occurs
+- Can be sent to you or can trigger other events
+
+Amaozn S3 storage classes
+- S3 Standard: high durability, availability and performance, for frequently accessed data, cloud apps, content distribution and big data
+- S3 Intelligent-tiering: optimizes costs without performance impact, long lived data with access patterns that are unknown or unpredictable
+- S3 Standart-Infrequent Access (standard-IA): data accessed less frequent but requires a rapid access when needed, long term storage and backups
+- S3 One-Zone_INfrequent Access (One Zone-IA): data accessesed less frequent but requires a rapid access when needed, but stores in a single availability zone (reduces costs), secondary backup copies storage data that is replicated from another region
+- S3 Glacier: secure, durable and low cost storage class for data archiving
+- S3 Glacier Deep Archive: lowest cost storage class, long term retention and digital preservation for that that might be accessed once or twice in a year
+ 
+Amazon S3 bucket URLs
+
+To upload your data:
+1. Create a bucket in an AWS Region
+2. Upload almost any number of objects to the bucket
+
+- Bucket path style URL endpoint:
+  - https://s3.<region-code>.amazonaws.com/<bucket-name>
+- Bucket virtual-hosted-style URL endpoint:
+  - https://<bucket-name>.s3-<region-code>.amazonaws.com
+
+Access the data anywhere:
+Console, CLI, SDK
+
+Common scenarios:
+- Backup and storage: provide data backup and storage for others
+- Provide services that deploy, install and manage web apps
+- Media hostingL Build a redundatn, scalable and highly availablee infrastructure that hosts video, photo or music uploads and downloads
+- Software delivery: host your software apps that customers can download.
+
+Pricing:
+- Gbs per month
+- Transfer OUT to other regions
+- PUT, COPY, POST LIST and GET requests
+Do not pay for:
+- Transfers IN to amazon S3
+- Transfers OUt from amazon S3 to amazon cloudFont or EC2 in the same region
+
+Sotrage pricing:
+1. Storage class type
+2. Amount of storage
+3. Requests
+4. Data transfer
+
+
+
+
+
+
+
+
 
 
 
