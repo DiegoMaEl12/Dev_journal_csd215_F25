@@ -1416,7 +1416,7 @@ Architecture is the art and science of designing and building large structures.
 - Ensure alignment between tech delverables of a solution and the business goals
 - work with delivery teams that are implementing the solution to ensure that the tech features are appropriate
 
-well arechitected framework:
+**Well-Architected Framework:**
 
 - Guide designed to help you build the most secure, high-performing, efficent infrastructure for your cloud apps
 - Provides a set of foundational questions and best practices that can help evaluate a cloud architecture
@@ -1494,7 +1494,46 @@ well arechitected framework:
       - Matching supply and demand
       - Optimizing over time 
   - Sustainability:
+    - Focuses on minimizing the environmental impacts of running cloud workloads
+    - key topics: shared responsibility mdel for sustainability, understanding impact, maximizing utilization to minimize required resources and reduce downstream impacts
 
+**Reliability and Availability**
+One of the best practices on the well architected framework is to plan for failure or, application/workflow downtime
+Reliability: 
+- Measure of your system's ability to provide functionality when desired by the user
+- You should think of reliability in statistical terms:
+  - **Probability that an entire system will function as intended for a period of time**
+- Failure of system components impact on the availability of the system
+- Statistical measurements:
+  - Mean time between failures (MTBF) = total time in service/number of failures
+  - Mean Time to Repair (MTTR) = total time bringing back online a system, repairing failures
+  - Mean Time Between Failures (MTBF) = MTTF + MTTR
+ 
+Availability:
+- Percentage of time that a system is operating normally or correctly performing the operations expected of it.
+- Also defined as the percentage of uptime (lenght of time that the system is online between failures)
+- Availability is reduced anytime tha app isn't operating normally, including scheduled and unscheduled.
+- Common shorthand when referring to availability is the number of 9s: (5 9s = 99.999%)
+- Highly available system is the one that can withstand some measure of degradation while still remaining available
+- In a highly available system downtime is minimized as much as possible and minimal human intervention is required
+- In highly available systems failures are recovered fast (often less than 1 minute)
+- <img width="355" height="205" alt="image" src="https://github.com/user-attachments/assets/4104cba9-35f0-4ac0-9b34-f6b267bbb249" />
+- Factors that influence availability:
+  - Fault tolerance: The built in redundancy of an app component's and it's ability to remain operational
+  - Scalability: the ability of your app to accomodate increases in capacity needs without changing design
+  - Recoverability: The process, policies and proceures that are related to restoring service after a catastrophic event
+ 
+**AWS Trusted Advisor**
+
+- Online tool that provides real time guidance to help you proovision your resources following AWS best practices
+- You can use this tool to design and review your architectures in AWS
+- Looks at your entire AWS environment and gives you real time recommendations in five categories:
+  - Cost optimization: makes recommendations to optimize cost based on your resource usage, such as eliminating unused resources, or making commits to reserve capacity.
+  - Performance: checking your service limits, looking at your provisioned throughput and monitoring overused instances
+  - Security: Identifying gaps that you need to close, and examins your permissions
+  - Fault tolerance: Increase availability and redundancy of your app, by taking advantage of automatic scaling, health checks, Multi-AZ deployment, and backup capabilities
+  - Service limits: Checks for service usage that is more than 80% of the usage limit.
+ 
 
 
 
