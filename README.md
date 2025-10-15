@@ -942,8 +942,40 @@ NAT gateway: Network Address Translation gateway
   - Reserved instance: full partial or no upfront payment, discount on hourly charge, 1 or 3 year term (predictable or steady state compute needs) 
   - Shecduled reserved instances: purchase a capacity reservation that is always available on a recurring schedule you specify, 1 year term
   - Spot instances: bid on unsued EC2 instances, can lower your costs (large scale at a significantly discounted price)
- 
   - Per second billing: available only for on demand instances, reserved instances and spot instances that run amazon linux or ubuntu
+- better explained by chatGPT
+  - **1) On-demand — simplest**
+    - What it is: You launch an instance and AWS bills you for the time it runs (by hour or — for eligible OSes — per second). No long-term commitment.
+    - When to use: short experiments, development, unpredictable traffic, or when you need maximum flexibility.
+    - Pros: most flexible; no up-front cost; simple.
+    - Cons: highest per-hour price compared to committed options.
+  - **2) Reserved Instances (RIs) — commit and save**
+    - What it is: You commit to run capacity for 1 or 3 years. In exchange you pay a lower hourly rate. You can choose payment options: No upfront, Partial upfront, or All upfront (more upfront → bigger discount).
+    - Types and details:
+    - Standard RI: biggest discount but less flexible (best for predictable, steady workloads).
+    - Convertible RI: less discount but you can change instance families/OS/size (more flexible).
+    - When to use: production servers that run 24/7 (databases, web servers you always need).
+    - Pros: predictable costs and big savings (often 30–70% vs on-demand, depending on options).
+    - Cons: long commitment; wrong commitment wastes money.
+    - How to decide: estimate your steady, always-on baseline usage and buy RIs to cover that baseline.
+  - **3) Scheduled Reserved Instances**
+    - What it is: Reserve capacity for fixed recurring time windows (for example, every weekday 08:00–18:00) for 1 year.
+    - When to use: predictable recurring workloads that only run during specific times (batch jobs, trading hours, etc).
+    - Pros/Cons: useful for time-boxed recurring work; less flexible than other RIs.
+  - **4) Spot Instances — huge discounts, interruptible**
+    - What it is: You run EC2 on spare AWS capacity at deep discounts (often 70–90% off). AWS can reclaim the instance with a short notice (typically 2 minutes).
+    - When to use: fault-tolerant, flexible workloads: batch processing, big data jobs, CI/CD jobs, scalable web tiers if you have fallbacks.
+    - Pros: very cheap.
+    - Cons: can be interrupted — not for single critical server unless you handle interruptions.
+  - **5) Dedicated Instances vs Dedicated Hosts — isolation & licensing**
+    - Dedicated instance: Your instances run on hardware dedicated to your account, but you don’t control which sockets/CPUs are allocated.
+    - Dedicated host: You rent an entire physical server you control. You can place instances on specific sockets — useful for BYOL (bring-your-own-license), compliance, or licensing that must be tied to physical cores.
+    - When to use: software licence rules (Windows Server, SUSE, Oracle), strict compliance that requires physical isolation.
+    - Pros: meets licence/compliance needs.
+    - Cons: far more expensive; more management overhead.
+  - **6) Per-second billing (practical note)**
+    - What it is: For eligible images (Amazon Linux, Ubuntu, and a few others) AWS charges by the second (with a 60-second minimum). Applies to On-demand, Reserved, and Spot when those OS images are used.
+    - Why it matters: saves money for short tasks, since you won’t pay for a full hour if you only used a few minutes.
  - <img width="759" height="313" alt="{FC1BD4D1-03FA-4F70-9A09-D6C65E21737A}" src="https://github.com/user-attachments/assets/9ba1ea45-9d5c-4718-af5a-7286d80d3358" />
 
 **Cost optimization**
