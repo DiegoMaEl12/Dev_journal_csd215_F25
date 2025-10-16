@@ -1296,13 +1296,13 @@ Lifecycle policies
 Storage classes
 - <img width="969" height="433" alt="image" src="https://github.com/user-attachments/assets/b336d9ce-ca8c-48d3-80c5-eb0d4c61c63d" />
 
-Amazon S3 vs Amazon S3 Glacier
-
-Data volume: No limit | No limit
-Average latency: ms | minutes/hours
-Item size: 5tb max | 40 tb max
-Cost GB/Month: High | Low
-Billed requests: PUT, COPY, POST, LIST and GET | UPLOAD and retrieval
+Amazon S3 vs Amazon S3 Glacier\
+\
+Data volume: No limit | No limit\
+Average latency: ms | minutes/hours\
+Item size: 5tb max | 40 tb max\
+Cost GB/Month: High | Low\
+Billed requests: PUT, COPY, POST, LIST and GET | UPLOAD and retrieval\
 Retrieval pricing: per request | per request and per GB
 
 <img width="624" height="294" alt="image" src="https://github.com/user-attachments/assets/cf159484-c2c6-4131-868a-336cf7fd4f2d" />
