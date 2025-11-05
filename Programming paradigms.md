@@ -102,6 +102,53 @@ Before OOP:
 
 
 
+## Data Calculations and Actions
+
+- Calculations: pure functions
+- Actions: impure functions
+- We want to leave actions as simple as possible
+
+
+#### ACTION definition: "an instruction for which the time and order in which it is called matters"
+  - they have side effects (calling them causes some change in a system)
+  - You have to be careful with actinos
+  - But the program need actions, there can't be a program with ONLY pure functions
+- Techniques to handle actions:
+  - Ways to safely change state over time
+  - Ways to guarantee ordering
+  - Ways to ensure actions happen only once
+- DATA and CALCULATIONS don't matter when they are called
+  - because they don't change things in the system, just accept a value and return a value
+#### DATA definition: "Facts about events"
+  - Data does no work
+  - Types of data: Immutable (cannot be changed after is initialized) & Mutable (can change after is initialized)
+  - Functional paradigm tries to work as much as possible with IMMUTABLE DATA
+  - Techniques for data:
+    - Organize data for efficient access
+    - Disciplines for storing data
+    - Principles for capturing what is important using data
+#### CALCULATIONS definition: "Computation from input to output"
+  - Have no side effects
+  - Called pure funtions
+  - The same calculation performed on the same input ALWAYS produces the same output
+  - Setters are not pure functinos (because they actually change the state of a variable)
+  - Getters ARE pure functions
+  - Functional programming prefer calculations over actions as much as possible
+  - Referential transparency: a function is referentially transparent if a call to the function could be replaced by the value returned by the function without changing the program
+  - **Calculations are referentially transparent.**
+  - Techniques for calculations:
+    - Functional programmers prefer calculations over actions bbecause:
+    - Calculations are composable
+    - IDEs can automatically analyze calculations and check for correct usage
+    - Calculations are much easier to test over actions.
+   
+
+#### Data > Calculations > Actions
+
+All three categories are useful but: \
+- Prefer **DATA** over both, calculations and actions
+  - **IMMUTABLE** data over mutable data
+- **CALCULATIONS** over actions
 
 
 
