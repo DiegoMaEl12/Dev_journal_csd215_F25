@@ -145,12 +145,28 @@ Before OOP:
 
 #### Data > Calculations > Actions
 
-All three categories are useful but: \
+All three categories are useful but:
 - Prefer **DATA** over both, calculations and actions
   - **IMMUTABLE** data over mutable data
 - **CALCULATIONS** over actions
+- **ACTIONS** should be as stupid as possible, so that just by looking at the code you can tell if it is doing the right thing or not\
+
+-- Simpler actions, data and calculations can hide in complex actions. -- 
 
 
+### Functional core & Imperative shell
+
+- <img width="526" height="410" alt="image" src="https://github.com/user-attachments/assets/0d0c95d9-862b-4046-82ff-e05f515fe41f" />
+- Functional core:
+  - All immutable data and pure functions
+  - App logic goes here
+  - No direct reference to 'messy outside' (files, databases, network, ...)
+ 
+- Imperative shell
+  - Minimal logic (delegated to functionsl core)
+  - Sequences operations (what order should things happen in?)
+  - Interacts with 'messy outside world)
+  - **Coordinates data between shell and core.**
 
 
 
