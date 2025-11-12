@@ -168,6 +168,72 @@ All three categories are useful but:
   - Interacts with 'messy outside world)
   - **Coordinates data between shell and core.**
 
+### Records, data classes, Enums and interfaces
+
+#### Using Records / data classes to represent data
+
+- A java racord can be used to represent a data type
+- A type that simply holds information
+- There are no methods in there
+
+#### ENUMS
+
+- Represent a specific fixed set of values
+- Better than strings because the compiler helps you detect invalid usages or values
+
+#### Sealed interfaces
+
+- It is the same as a normal interface
+  - it will define some methods, usually only the signature of them
+  - So that all the classes that implement it, must have an implementation for each of the methods declared in the interface
+ 
+- A sealed interface allows you to explicitly define which classes can implement the interface
+  ``public sealed interface name { record Type1() implements name{}; record Type2() implements name {}; }``
+- sealed interfaces can define only methods or nested data types (like records)
+- You can define class variables in interfaces, but not instance variables
+- you can define class members
+- Usually the different types on sealed interfaces have completely different methods themselves
+  - So it is common to only define data types like records in sealed interfaces
+- A type that has a predefined set of subtypes
+
+### Inputs and outputs
+
+- **Input**: external information that a function uses in its computations
+  - Can be arguments
+  - Global variables
+  - input from the user
+- Explicit input: **Parameters**
+- Implicit input: all the other inputs, a function might have
+<br>
+
+- **Output**: the information that leaves a function or effects a function causes
+  - Returned values
+  - writting to a file
+  - Print to screen
+  - store to a db
+  - ... 
+- Explicit output: the **returned** value itself
+- Implicit output: All other side effects a function might have.
+  - Everytime an input changes its value in some way, those are implicit outputs
+  - You can have an explicit output value, but if the input, changes its value AND THEN returns the changed input, that's an explicit output and an implicit output (changing the input)
+ 
+
+### Extracting calculations from actions
+
+1. Identify portion of action that is a calculation and extract it into a separate subroutine
+2. Identify new subroutine's implicit inputs and outputs
+3. Convert implicits to explicits
+   - First convert implicit outputs to return values
+   - Then convert implicit inputs to parameters
+
+- If we can't eliminate actions, improve them by -- Reducing implicit inputs and outputs as much as possible --
+- Dependency inection: set the inputs to explicits, that way you are injecting the dependency to the method doing the job
+- Loosely coupled functions
+- 
+
+
+
+
 
 
 
