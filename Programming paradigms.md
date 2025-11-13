@@ -232,6 +232,16 @@ All three categories are useful but:
 - 
 
 
+### Singleton
+- A common pattern where you have a private class variable which is the same type as the class itself.
+- And then a private constructor method
+- And a public class method that calls the constructor, so that there will only be one instance of that class.
+- Provides a global point of access to that instance
+
+
+
+
+
 
 
 
